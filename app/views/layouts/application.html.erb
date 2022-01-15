@@ -5,42 +5,42 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://kit.fontawesome.com/139b1bc0e5.js" crossorigin="anonymous"></script>
 
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!--%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %-->
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class ="d-flex flex-column vh-100">
-    <header class="bg-dark text-white pt-5 pb-4">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <header class="bg-dark text-white　pt-2 pb-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
         <div class="container">
+          <a class="navbar-brand" href="/">Bookers</a>
           <div class="collapse navbar-collapse ">
             <ul class="navbar-nav ml-auto">
-              <li>
-                <%= link_to "Bookers", root_path %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Home", root_path, class: 'nav-link text-light'%>
-              </li>
+              <a class ="nav-link text-light" href="/"><i class="fas fa-home"></i> Home</a>
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "Users", users_path, class: 'nav-link text-light'%>
+                  <a class ="nav-link text-light" href="/users"><i class="fas fa-users"></i> Users</a>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Books", books_path, class: 'nav-link text-light'%>
+                  <a class ="nav-link text-light" href="/books"><i class="fas fa-book-open"></i> Books</a>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-light'%>
+                  <a class ="nav-link text-light" data-method="delete" href="/users/sign_out"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                  <!--method: :delete-->
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light'%>
+                  <a class ="nav-link text-light" href="/users/sign_up"><i class="fas fa-user-plus"></i> Sign up</a>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light'%>
+                  <a class ="nav-link text-light" href="/users/sign_in"><i class="fas fa-sign-in-alt"></i> Log in</a>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "About", homes_about_path, class: 'nav-link text-light'%>
+                  <a class ="nav-link text-light" href="/homes/about"><i class="fas fa-link"></i> About</a>
                 </li>
               <% end %>
             </ul>
@@ -50,7 +50,7 @@
     </header>
     <%= yield %>
     <footer>
-      <div class="col-lg-8">
+      <div class="col-lg-12">
         <p style="text-align:center">CopyRight Infratop.inc</p>
       </div>
     </footer>
