@@ -1,11 +1,28 @@
+
+    <!--%= image_tag @user.get_profile_image %-->
+
+<h2>User info</h2>
 <div>
-  <h2>User Info</h2>
-  <div>
-    <%= image_tag @user.get_profile_image %>
-    <h3><%= @user.name %></h3>
-    <h3><%= @user.introduction %></h3>
+  <% if @user.profile_image.attached? %>
+    <%= image_tag @user.image, size: "63x63" %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: "63x63" %>
+  <% end %>
+  <table class="tables">
+    <tbody>
+      <tr>
+        <th class="p-3">name</th><td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th class="p-3">introduction</th><td><%= @user.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
     <% if @user == current_user %>
-      <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+      <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block ml-3 px-5" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
     <% end %>
   </div>
 </div>
