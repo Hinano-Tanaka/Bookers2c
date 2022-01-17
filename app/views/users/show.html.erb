@@ -1,27 +1,31 @@
 <!--Users#show-->
-<!--左上の-->
-<h2>User info</h2>
-<div>
-  <% if @user.profile_image.attached? %>
-    <%= image_tag @user.image, size: "63x63" %>
-  <% else %>
-    <%= image_tag 'no_image.jpg', size: "63x63" %>
-  <% end %>
-  <table class="tables">
-    <tbody>
-      <tr>
-        <th class="p-3">name</th><td><%= @user.name %></td>
-      </tr>
-      <tr>
-        <th class="p-3">introduction</th><td><%= @user.introduction %></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container px-5 px-sm-0 mt-4">
   <div class="row">
-    <% if @user == current_user %>
-      <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block ml-3 px-5" do %>
-        <i class="fas fa-user-cog"></i>
-      <% end %>
-    <% end %>
+    <div class="col-md-3">
+      <%= render 'userinfo', book: @book, user: @user %>
+    </div>
+<!--左上の-->
+    <!------------------------------------------>
+    <div class="col-md-8">
+      <h2>Books</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>title</th>
+            <th>opinion</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   get 'homes/about'
   resources :users, only: [:index, :show, :edit, :update]
   resources :books, only: [:create, :index, :show, :edit, :destroy]
+  post "users" => "books#create"
+  post "books" => "books#create"
+  post "users/:id" => "books#create"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
