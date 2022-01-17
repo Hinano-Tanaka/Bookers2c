@@ -24,6 +24,10 @@
       <div class="actions">
         <%= f.submit "Update Book", class: "btn btn-success" %>
       </div>
+      <div>
+        <%= link_to "Show", book_path(@book) %>
+        <%= link_to "Back", books_path %>
+      </div>
     <% end %>
   </div>
 </div>
