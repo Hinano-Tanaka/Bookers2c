@@ -1,14 +1,9 @@
 
-<!--%= image_tag @user.get_profile_image %-->
 
 <h2>User info</h2>
 <div>
-  <% if user.profile_image.attached? %>
-    <%= image_tag user.image, size: "63x63" %>
-  <% else %>
-    <%= image_tag 'no_image.jpg', size: "63x63" %>
-  <% end %>
-  <table class="tables">
+  <%= image_tag user.get_profile_image("63x63") %>
+  <table class="table">
     <tbody>
       <tr>
         <th class="p-3">name</th><td><%= user.name %></td>
@@ -30,7 +25,7 @@
 <!---------------------------------------------------------------------------->
 
 <h2 class="mt-4">New Book</h2>
-<%= form_with model: book, method: :post, local:true do |f| %>
+<%= form_with model: Book.new, method: :post, local:true do |f| %>
   <p>Title</p>
     <%= f.text_field :title %>
   <p>Opinion</p>
