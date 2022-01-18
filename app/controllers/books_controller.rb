@@ -3,32 +3,31 @@ class BooksController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def new
-    @book = Book.new
+    @new_book = Book.new
   end
 
   def create
     @user = User.find(current_user.id)
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    if @book.save
+    @new_book = Book.new(book_params)
+    @new_book.user_id = current_user.id
+    if @new_book.save
       flash[:notice] = 'You have created book successfully'
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@new_book.id)
     else
-      flash[:notice] = "error"
-      @book = Book.new
+      # @new_book = Book.new
       @books = Book.all
       render :index
     end
   end
 
   def index
-    @book = Book.new
+    @new_book = Book.new
     @books = Book.all
     @user = current_user
   end
 
   def show
-    @book = Book.new
+    @new_book = Book.new
     @book = Book.find(params[:id])
     # @user = User.find(current_user.id)
     @user = @book.user
