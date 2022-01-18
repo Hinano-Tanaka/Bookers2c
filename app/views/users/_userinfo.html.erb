@@ -14,11 +14,11 @@
   </table>
   <div class="row">
     <% if user == current_user %>
-      <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block ml-3 px-5" do %>
+      <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block ml-3 px-5" do %>
         <i class="fas fa-user-cog"></i>
       <% end %>
     <% else %>
-      <%= link_to user_path(user.id), class: "btn btn-outline-secondary btn-block ml-3 px-5" do %>
+      <%= link_to user_path(current_user), class: "btn btn-outline-secondary btn-block ml-3 px-5" do %>
         <i class="fas fa-user-cog"></i>
       <% end %>
     <% end %>
@@ -28,7 +28,17 @@
 <!---------------------------------------------------------------------------->
 
 <h2 class="mt-4">New book</h2>
-<%= form_with model: Book.new, method: :post, local:true do |f| %>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: book, method: :post, local:true do |f| %>
   <p>Title</p>
     <%= f.text_field :title %>
   <p>Opinion</p>
