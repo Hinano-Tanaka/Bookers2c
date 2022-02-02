@@ -23,6 +23,10 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def show
+    @group = Group.find(params[:id])
+  end
+
   def update
     if @group.update(group_params)
       redirect_to groups_path
